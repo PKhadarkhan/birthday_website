@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Target date: 5 seconds from now (for test run)
-    // const targetDate = new Date("June 1, 2026 00:00:00").getTime();
-    const targetDate = new Date().getTime() + 6000;
+    // Target date: June 1st, midnight
+    const targetDate = new Date("June 1, 2026 00:00:00").getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
