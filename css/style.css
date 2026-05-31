@@ -1,0 +1,114 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fcece5;
+    overflow: hidden; /* Prevents scrolling */
+}
+
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.countdown-wrapper {
+    background-image: url('../images/birthday_bg.png');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 100vh; /* Fixed exactly to screen height to prevent scroll */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 15vh;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.birthday-title {
+    font-family: 'Great Vibes', cursive;
+    color: #dfb28b;
+    /* Lighter gold base color */
+    /* Scaled up significantly to match the large title */
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    text-align: center;
+    /* Layered text-shadow to create a 3D metallic gold extrusion */
+    text-shadow:
+        1px 1px 0px #9a6b46,
+        2px 2px 0px #8b5a33,
+        4px 4px 8px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    z-index: 2;
+    margin: 0 0 40px 0;
+    /* Space between title and card */
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    /* Slightly smaller corners */
+    padding: 15px 35px;
+    /* Tighter padding so the box is smaller */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    /* Let the box hug the content tightly */
+    max-width: 90%;
+}
+
+#countdown {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.time-block,
+.separator {
+    /* Even smaller size to fit perfectly */
+    font-size: clamp(2rem, 8vw, 6rem);
+    line-height: 1;
+    color: #ffffff;
+    font-weight: 700;
+    /* Thicker numbers */
+    /* Heavy stroke to match the bronze/gold border */
+    -webkit-text-stroke: clamp(1px, 0.4vw, 3px) #b8866b;
+    text-shadow: 3px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.separator {
+    padding-bottom: 0.08em;
+    margin: 0 0.5vw;
+    /* Reduced spacing around the colons */
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .glass-card {
+        padding: 20px 25px;
+        border-radius: 20px;
+        width: 95%;
+    }
+
+    .birthday-title {
+        margin: 0 0 20px 0;
+    }
+}

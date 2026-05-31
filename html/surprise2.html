@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are you sure?</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            background-color: #fcece5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            background-image: url('../images/birthday_bg.png');
+            background-size: cover;
+            background-position: center bottom;
+        }
+        .surprise-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .surprise-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #d88a8a;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
+        }
+        .btn-yes, .btn-no {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            padding: 10px 40px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-weight: 600;
+        }
+        .btn-yes {
+            background-color: #e5989b;
+            color: white;
+            margin-right: 20px;
+            box-shadow: 0 4px 10px rgba(229, 152, 155, 0.4);
+        }
+        .btn-yes:hover {
+            background-color: #d88a8a;
+            transform: scale(1.1);
+        }
+        .btn-no {
+            background-color: #b5838d;
+            color: white;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(181, 131, 141, 0.4);
+        }
+        @media (max-width: 768px) {
+            .surprise-card {
+                padding: 30px 20px;
+                width: 90%;
+            }
+            .surprise-title {
+                font-size: 2.5rem;
+                margin-bottom: 25px;
+            }
+            .surprise-card img {
+                width: 180px !important;
+            }
+            .btn-yes, .btn-no {
+                font-size: 1.2rem;
+                padding: 10px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="surprise-card">
+        <img src="../images/2.jpg" alt="Surprise Photo 2" style="width: 250px; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <h1 class="surprise-title">Are you dare to see the surprise?</h1>
+        <div class="d-flex justify-content-center align-items-center position-relative">
+            <button class="btn-yes" onclick="window.location.href='surprise3.html'">Yes</button>
+            <button class="btn-no" id="btnNo2">No</button>
+        </div>
+    </div>
+
+    <script>
+        const btnNo2 = document.getElementById('btnNo2');
+        
+        // Simpler joke: The "No" button just skips to a nearby place
+        btnNo2.addEventListener('mouseover', function() {
+            // Pick a random direction to jump (between -150px and +150px)
+            const x = (Math.random() - 0.5) * 300; 
+            const y = (Math.random() - 0.5) * 300; 
+            
+            btnNo2.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body>
+</html>

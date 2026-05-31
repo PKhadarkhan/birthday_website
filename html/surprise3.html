@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            background-color: #fcece5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('../images/birthday_bg.png');
+            background-size: cover;
+            background-position: center bottom;
+        }
+        .surprise-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            max-width: 600px;
+        }
+        .surprise-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            color: #d88a8a;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.9);
+        }
+        .surprise-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .surprise-card {
+                padding: 30px 20px;
+                width: 90%;
+            }
+            .surprise-title {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+            .surprise-card img {
+                width: 180px !important;
+            }
+            .btn-yes {
+                font-size: 1.2rem !important;
+                padding: 10px 25px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="surprise-card">
+        <img src="../images/1.jpg" alt="Surprise Photo 3" style="width: 250px; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <h1 class="surprise-title">Thank you to see our surprise! 🎉</h1>
+        <button class="btn-yes" onclick="window.location.href='gallery.html'" style="margin: 0; margin-top: 10px; padding: 15px 50px; font-size: 1.8rem;">Thank You! ❤️</button>
+    </div>
+</body>
+</html>

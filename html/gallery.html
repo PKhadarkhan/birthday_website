@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gallery Note</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #2b1f1a;
+            background-image: url('../images/party_wood_bg.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .main-composition {
+            position: relative;
+            flex-grow: 1;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Left Side: Polaroids & Roses placeholder */
+        .left-decor {
+            position: absolute;
+            left: 3%;
+            top: 5%;
+            width: 30%;
+            height: 80%;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: rotate(-3deg);
+            z-index: 1;
+            background-image: url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&q=80&w=400');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Right Side: Polaroid images */
+        .right-decor {
+            position: absolute;
+            right: 5%;
+            top: 15%;
+            width: 18%;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            background-color: white;
+            padding: 10px 10px 40px 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        .gallery-img:nth-child(1) {
+            transform: rotate(4deg);
+        }
+
+        .gallery-img:nth-child(2) {
+            transform: rotate(-3deg);
+        }
+
+        /* Center Parchment */
+        .parchment-paper {
+            background-color: #e6d3ba;
+            background-image: url('../images/parchment.png');
+            background-size: cover;
+            background-position: center;
+            padding: 40px 60px;
+            padding-bottom: 70px;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 2;
+            width: 48%;
+            max-width: 700px;
+            transform: rotate(-1deg);
+        }
+
+        .wax-seal {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100px;
+            height: 100px;
+            background-color: #b92b2b;
+            border-radius: 50%;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6), 0 5px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            font-family: 'Caveat', cursive;
+            font-weight: bold;
+            z-index: 5;
+            transform: rotate(15deg);
+        }
+
+        .wax-seal::after {
+            content: '';
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+        }
+
+        .note-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.8rem;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .note-body {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: #2a2a2a;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .note-signoff {
+            font-family: 'Caveat', cursive;
+            font-size: 2.1rem;
+            color: #222;
+        }
+
+        /* Spotify Widget */
+        .spotify-widget {
+            background-color: #165b6f;
+            border-radius: 8px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            z-index: 6;
+        }
+
+        .album-art {
+            width: 50px;
+            height: 50px;
+            border-radius: 4px;
+            margin-right: 15px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/4/45/Divide_cover.png');
+            background-size: cover;
+        }
+
+        .song-info {
+            flex-grow: 1;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .song-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .song-artist {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .play-btn {
+            background: white;
+            color: #165b6f;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 15px;
+            font-size: 1rem;
+            padding-left: 3px;
+        }
+
+        /* Cork Mat & Vinyl */
+        .cork-mat {
+            position: absolute;
+            bottom: 5%;
+            right: 20%;
+            width: 220px;
+            height: 220px;
+            background-color: #9c7b64;
+            /* Cork color */
+            background-image: radial-gradient(#8b6a55 1px, transparent 1px);
+            background-size: 5px 5px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(-5deg);
+        }
+
+        .vinyl-record {
+            width: 190px;
+            height: 190px;
+            background-image: url('../images/vinyl.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+            mix-blend-mode: multiply;
+            animation: spin 8s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .vinyl-record.playing {
+            animation-play-state: running;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Footer */
+        .footer-bar {
+            width: 100%;
+            background-color: white;
+            padding: 10px 20px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: #222;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        @media (max-width: 1100px) {
+
+            .left-decor,
+            .right-decor {
+                width: 20%;
+            }
+
+            .parchment-paper {
+                width: 60%;
+            }
+
+            .cork-mat {
+                right: 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .left-decor,
+            .right-decor,
+            .cork-mat {
+                display: none;
+            }
+
+            .parchment-paper {
+                width: 95%;
+                padding: 30px 20px;
+                padding-bottom: 70px;
+            }
+
+            .note-title {
+                font-size: 1.4rem;
+                text-align: center;
+            }
+
+            .note-body {
+                font-size: 1.4rem;
+            }
+
+            .note-signoff {
+                font-size: 1.6rem;
+            }
+
+            .wax-seal {
+                width: 70px;
+                height: 70px;
+                top: -20px;
+                right: -10px;
+                font-size: 14px;
+            }
+
+            .wax-seal::after {
+                width: 50px;
+                height: 50px;
+            }
+
+            .spotify-widget {
+                width: 95%;
+                padding: 8px 10px;
+                bottom: -30px;
+            }
+
+            .album-art {
+                width: 40px;
+                height: 40px;
+            }
+
+            .song-title {
+                font-size: 0.9rem;
+            }
+
+            .song-artist {
+                font-size: 0.7rem;
+            }
+
+            .play-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+
+            .footer-bar {
+                font-size: 1.2rem;
+                padding: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-composition">
+
+        <!-- Left Polaroid background -->
+        <div class="left-decor"></div>
+
+        <!-- Right Polaroid background -->
+        <div class="right-decor">
+            <img src="../images/2.jpg" class="gallery-img" alt="Gallery Image 1">
+            <img src="../images/3.jpg" class="gallery-img" alt="Gallery Image 2">
+        </div>
+
+        <!-- Parchment Letter -->
+        <div class="parchment-paper">
+            <div class="wax-seal">Seal</div>
+            <h1 class="note-title">Happy Birthday, My Fahima ❤️</h1>
+            <p class="note-body">
+                To my amazing sister, the one who knows me best and always has my back. Growing up with you has been an
+                adventure, and I'm so proud of the incredible woman you've become. May this day be filled with all the
+                joy, laughter, and cake you deserve! Let's fill this memory board together. Can't wait to celebrate!
+            </p>
+            <p class="note-signoff">
+                With all my love,<br>Your Sibling Forever ❤️
+            </p>
+
+            <!-- Spotify Widget -->
+            <div class="spotify-widget">
+                <div class="album-art"></div>
+                <div class="song-info">
+                    <p class="song-title">Happy Birthday (Lofi Remix)</p>
+                    <p class="song-artist">Bulan Sutena</p>
+                </div>
+                <button class="play-btn" id="customPlayBtn">▶</button>
+            </div>
+        </div>
+
+        <!-- Cork Mat and Vinyl Record -->
+        <div class="cork-mat">
+            <div class="vinyl-record" id="vinylRecord"></div>
+        </div>
+    </div>
+
+    <!-- White Footer -->
+    <div class="footer-bar">
+        Project: Sister's Birthday Gallery & Memories - [Party Edition]
+    </div>
+
+    <!-- Hidden Audio for manual background music -->
+    <audio id="bgMusic" loop>
+        <source src="../musics/birthday_song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const playBtn = document.getElementById('customPlayBtn');
+        const bgMusic = document.getElementById('bgMusic');
+        const vinylRecord = document.getElementById('vinylRecord');
+        let isPlaying = false;
+
+        // Try to automatically play the music when the page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                playBtn.innerText = '❚❚';
+                playBtn.style.paddingLeft = '0';
+                vinylRecord.classList.add('playing');
+            }).catch(e => {
+                console.log("Autoplay blocked until user interaction", e);
+            });
+        });
+
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                playBtn.innerText = '▶';
+                playBtn.style.paddingLeft = '3px';
+                vinylRecord.classList.remove('playing');
+            } else {
+                bgMusic.play().catch(e => console.log("Add music.mp3", e));
+                playBtn.innerText = '❚❚';
+                playBtn.style.paddingLeft = '0';
+                vinylRecord.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+
+</html>
