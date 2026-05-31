@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url=html/index.html" />
     <title>Redirecting...</title>
+    <script>
+      var currentUrl = window.location.href;
+      if (!currentUrl.endsWith('/') && !currentUrl.endsWith('.html')) {
+        currentUrl += '/';
+      }
+      window.location.href = currentUrl + "html/index.html";
+    </script>
   </head>
   <body>
     <p>Redirecting to the birthday site...</p>
