@@ -1,6 +1,6 @@
 # Birthday Website
 
-A beautiful, interactive birthday website to celebrate a special day.
+A beautiful and interactive birthday website designed to celebrate a special day.
 
 ## 🚀 Implementation (Technologies Used)
 
